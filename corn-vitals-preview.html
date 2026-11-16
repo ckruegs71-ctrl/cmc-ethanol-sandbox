@@ -1,0 +1,1063 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>U.S. Corn Vitals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --page:#edf2f7; --surface:#f7fafc; --card:#ffffff; --border:#cdd8e3; --text:#1e3a50; --muted:#51718a; --grid:#e2eaf0;
+  --accent:#0F75BC; --accent-text:#0b62a0; --focus:#0F75BC; --on-accent:#ffffff;
+  --s1:#0e8fa8; --s2:#d9682b; --s3:#7a4fc9; --s4:#0c9a58;
+  --good:#0ca30c; --watch:#fab219; --serious:#ec835a; --critical:#d03b3b;
+  --band:#e7f1f8; --icon-edge:rgba(13,27,42,.35); --shadow:0 1px 2px rgba(30,58,80,.06);
+  --tint-good:rgba(12,163,12,.10); --tint-watch:rgba(250,178,25,.16); --tint-off:rgba(236,131,90,.16);
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --page:#0d1b2a; --surface:#13243a; --card:#192e47; --border:#22415c; --text:#c4d8e8; --muted:#8fb0c6; --grid:#1b3349;
+    --accent:#0F75BC; --accent-text:#6cb4ea; --focus:#4aa3e3; --on-accent:#ffffff;
+    --s1:#139fb6; --s2:#d9702f; --s3:#7c6be0; --s4:#1ea862;
+    --band:#1d3652; --icon-edge:rgba(0,0,0,.45); --shadow:none;
+    --tint-good:rgba(12,163,12,.16); --tint-watch:rgba(250,178,25,.14); --tint-off:rgba(236,131,90,.16);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --page:#0d1b2a; --surface:#13243a; --card:#192e47; --border:#22415c; --text:#c4d8e8; --muted:#8fb0c6; --grid:#1b3349;
+  --accent:#0F75BC; --accent-text:#6cb4ea; --focus:#4aa3e3; --on-accent:#ffffff;
+  --s1:#139fb6; --s2:#d9702f; --s3:#7c6be0; --s4:#1ea862;
+  --band:#1d3652; --icon-edge:rgba(0,0,0,.45); --shadow:none;
+  --tint-good:rgba(12,163,12,.16); --tint-watch:rgba(250,178,25,.14); --tint-off:rgba(236,131,90,.16);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--page);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;font-size:15px;line-height:1.5;overflow-x:hidden}
+button,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 16px}
+.tnum,table,.axis{font-variant-numeric:tabular-nums}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+
+/* Header */
+header.top{background:var(--surface);border-bottom:1px solid var(--border)}
+.top-inner{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px}
+.brand{display:flex;gap:12px;align-items:flex-start;min-width:0}
+.brand svg{flex:0 0 auto;margin-top:3px}
+.brand h1{font-size:21px;line-height:1.25;margin:0;font-weight:700}
+.meta{color:var(--muted);font-size:13px;margin-top:2px}
+.meta b{color:var(--text);font-weight:600}
+.badge{display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;border:1px solid var(--accent);color:var(--accent-text);background:var(--card);white-space:nowrap}
+.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end}
+.field{display:flex;flex-direction:column;gap:2px;font-size:12px;color:var(--muted);font-weight:600}
+select{min-height:40px;border:1px solid var(--border);background:var(--card);border-radius:10px;padding:6px 10px;font-size:14px;max-width:100%}
+.btn{border:1px solid var(--border);background:var(--card);border-radius:10px;padding:8px 14px;min-height:40px;cursor:pointer;font-weight:600;font-size:14px;display:inline-flex;align-items:center;gap:6px}
+.btn:hover{border-color:var(--accent)}
+.btn[aria-pressed="true"]{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.btn-sm{min-height:34px;padding:5px 11px;font-size:13px}
+
+main{padding:20px 0 8px}
+section.block{margin:0 0 26px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow)}
+h2{font-size:18px;margin:0 0 4px;font-weight:700}
+h3{font-size:15px;margin:0;font-weight:700}
+.sec-head{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:flex-end;justify-content:space-between;margin-bottom:12px}
+.sec-head p{margin:0;color:var(--muted);font-size:14px;max-width:760px}
+
+/* Headline */
+.headline{border-left:4px solid var(--accent);padding:18px 18px 16px}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--accent-text);margin-bottom:6px}
+.headline .line{font-size:18px;line-height:1.4;font-weight:600;margin:0}
+.checks{margin:12px 0 0;padding:0;list-style:none;display:grid;gap:6px}
+.checks li{font-size:13.5px;color:var(--muted);display:flex;gap:8px;align-items:flex-start}
+.checks li svg{flex:0 0 auto;margin-top:2px}
+.note-flag{color:var(--text)!important;background:var(--tint-watch);border-radius:8px;padding:6px 10px}
+.rule-line{font-size:13.5px;margin:10px 0 0;color:var(--muted)}
+
+/* Status pill and icons */
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;padding:3px 10px 3px 6px;border-radius:999px;white-space:nowrap;color:var(--text)}
+.pill.on{background:var(--tint-good)} .pill.watch{background:var(--tint-watch)} .pill.off{background:var(--tint-off)} .pill.none{background:var(--surface);border:1px solid var(--border)}
+.si{flex:0 0 auto;display:block}
+.si .shape{stroke:var(--icon-edge);stroke-width:1}
+.si.on .shape{fill:var(--good)} .si.watch .shape{fill:var(--watch)} .si.off .shape{fill:var(--serious)}
+.dirword{font-size:13px;color:var(--muted);font-weight:500}
+
+/* What moved */
+.moved{display:grid;gap:12px;grid-template-columns:1fr}
+.mv{display:flex;flex-direction:column;gap:10px}
+.mv .top{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;justify-content:space-between}
+.mv .big{font-size:26px;font-weight:700;line-height:1.15}
+.mv .big small{font-size:14px;font-weight:600;color:var(--muted)}
+.mv .read{margin:0;font-size:14.5px}
+.mv dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:13.5px}
+.mv dt{color:var(--muted)}
+.mv dd{margin:0}
+details{border-top:1px solid var(--border);padding-top:8px}
+summary{cursor:pointer;font-weight:600;font-size:13.5px;color:var(--accent-text);min-height:32px;display:flex;align-items:center}
+.math{font-size:13px;margin:6px 0 0;padding:0 0 0 18px}
+.math li{margin:3px 0}
+.copybox{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:10px;font-size:13.5px}
+.copybox p{margin:0 0 8px}
+.empty{display:flex;gap:10px;align-items:flex-start}
+
+/* Status count */
+.counts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.stat{padding:14px 12px}
+.stat .n{font-size:32px;font-weight:700;line-height:1.1;margin-top:6px}
+.stat .lab{display:flex;gap:6px;align-items:center;font-size:13.5px;font-weight:600}
+.stat .sub{font-size:12.5px;color:var(--muted)}
+
+/* Vitals */
+.group{margin:0 0 18px}
+.group h3{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:0 0 8px}
+.tiles{display:grid;gap:12px;grid-template-columns:1fr}
+.tile{all:unset;box-sizing:border-box;display:flex;flex-direction:column;gap:6px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px;cursor:pointer;box-shadow:var(--shadow);min-width:0}
+.tile:hover{border-color:var(--accent)}
+.tile:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.tile .row1{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.tile .name{font-weight:600;font-size:14.5px}
+.tag{font-size:11px;font-weight:700;border:1px solid var(--border);border-radius:6px;padding:1px 6px;color:var(--muted);text-transform:lowercase}
+.tile .val{font-size:28px;font-weight:700;line-height:1.1}
+.tile .val small{font-size:14px;font-weight:600;color:var(--muted)}
+.yrflag{font-size:12px;font-weight:600;color:var(--accent-text)}
+.tile .line2{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center;font-size:13px;color:var(--muted)}
+.spark{width:100%;height:44px;display:block}
+.spark .ln{fill:none;stroke:var(--s1);stroke-width:2;vector-effect:non-scaling-stroke;stroke-linejoin:round;stroke-linecap:round}
+.spark .ln.est{stroke-dasharray:4 4}
+.spark .nm{stroke:var(--muted);stroke-width:1;vector-effect:non-scaling-stroke;opacity:.8}
+.spark .dot{stroke:var(--s1);stroke-width:8;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.spark .band{fill:var(--band)}
+.tile .foot{font-size:12px;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+
+/* Tables */
+.tscroll{overflow-x:auto;border:1px solid var(--border);border-radius:10px;max-width:100%}
+table{border-collapse:collapse;width:100%;font-size:13px;background:var(--card)}
+th,td{padding:7px 10px;text-align:right;border-bottom:1px solid var(--grid);white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+thead th{background:var(--surface);font-weight:600;color:var(--muted);position:sticky;top:0}
+tr.sel td{background:var(--band);font-weight:600}
+td.l,th.l{text-align:left}
+
+/* Quick Stats list */
+.qs{display:grid;gap:12px;grid-template-columns:1fr}
+.qs .card{display:flex;flex-direction:column;gap:6px}
+.qs .freq{font-size:13px;font-weight:600;color:var(--accent-text)}
+.qs p{margin:0;font-size:14px}
+
+/* Rules */
+.rules{margin:0;padding:0 0 0 18px;font-size:14px}
+.rules li{margin:4px 0}
+.rules code{font-family:inherit;font-weight:600;color:var(--muted);font-size:12px}
+
+/* Detail panel */
+.scrim{position:fixed;inset:0;background:rgba(13,27,42,.5);display:none;z-index:40}
+.scrim.open{display:block}
+.panel{position:fixed;top:0;right:0;bottom:0;width:min(760px,100%);background:var(--surface);border-left:1px solid var(--border);z-index:41;overflow-y:auto;overflow-x:hidden;transform:translateX(100%);transition:transform .2s ease;visibility:hidden}
+.panel.open{transform:none;visibility:visible}
+.panel-inner{padding:18px 16px 32px}
+.panel-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:10px}
+.panel h2{font-size:20px}
+.chartbox{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 8px 8px;position:relative}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12.5px;color:var(--muted);margin:8px 6px 0}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.chart .gl{stroke:var(--grid);stroke-width:1}
+.chart .axis{fill:var(--muted);font-size:11px}
+.chart .ln{fill:none;stroke:var(--s1);stroke-width:2;stroke-linejoin:round}
+.chart .ln.est{stroke-dasharray:5 4}
+.chart .nm{stroke:var(--muted);stroke-width:1.5;stroke-dasharray:6 4}
+.chart .band{fill:var(--band)}
+.chart .pt{fill:var(--s1);stroke:var(--card);stroke-width:1.5}
+.chart .pt.hollow{fill:var(--card);stroke:var(--s1);stroke-width:2}
+.chart .pt.sel{stroke:var(--text);stroke-width:2}
+.chart .lbl{fill:var(--text);font-size:12px;font-weight:700}
+.chart .nlbl{fill:var(--muted);font-size:11px}
+.chart .hover{fill:transparent}
+.chart .xh{stroke:var(--muted);stroke-width:1;opacity:0}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14px;margin:14px 0}
+.kv dt{color:var(--muted)}
+.kv dd{margin:0}
+#tip{position:fixed;z-index:60;pointer-events:none;background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:7px 9px;font-size:12.5px;line-height:1.4;box-shadow:0 4px 14px rgba(0,0,0,.18);max-width:260px;display:none;font-variant-numeric:tabular-nums}
+
+footer{border-top:1px solid var(--border);background:var(--surface);margin-top:12px}
+footer .wrap{padding:16px;font-size:13px;color:var(--muted);display:grid;gap:4px}
+footer b{color:var(--text)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+@media (min-width:768px){
+  .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .qs{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .moved{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .headline .line{font-size:22px}
+  .panel-inner{padding:22px 24px 36px}
+}
+@media (min-width:1200px){
+  .tiles{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .moved{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .qs{grid-template-columns:repeat(3,minmax(0,1fr))}
+  /* One shared grid so every row of tiles starts on the same line */
+  .vgroups{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:auto auto auto;gap:12px 12px;align-items:stretch}
+  .vgroups .group,.vgroups .tiles{display:contents}
+  .vgroups .group h3{margin:0;align-self:end}
+  .vgroups .group:nth-child(1) h3{grid-column:1 / span 2;grid-row:1}
+  .vgroups .group:nth-child(2) h3{grid-column:3;grid-row:1}
+  .vgroups .group:nth-child(3) h3{grid-column:4;grid-row:1}
+  .vgroups .tile[data-vital="production"]{grid-column:1;grid-row:2}
+  .vgroups .tile[data-vital="yield"]{grid-column:2;grid-row:2}
+  .vgroups .tile[data-vital="exports"]{grid-column:3;grid-row:2}
+  .vgroups .tile[data-vital="stocksToUse"]{grid-column:4;grid-row:2}
+  .vgroups .tile[data-vital="endingStocks"]{grid-column:1;grid-row:3}
+  .vgroups .tile[data-vital="ethanolUse"]{grid-column:3;grid-row:3}
+  .vgroups .tile[data-vital="farmPrice"]{grid-column:4;grid-row:3}
+  .vgroups .tile .spark{margin-top:auto}
+}
+@media (pointer:coarse){ .btn,select,summary{min-height:44px} .btn-sm{min-height:40px} }
+
+@media print{
+  :root:root:root{
+    --page:#ffffff; --surface:#f7fafc; --card:#ffffff; --border:#cdd8e3; --text:#1e3a50; --muted:#51718a; --grid:#e2eaf0;
+    --accent:#0F75BC; --accent-text:#0b62a0; --s1:#0e8fa8; --band:#e7f1f8; --shadow:none; color-scheme:light;
+  }
+  body{font-size:11.5px;background:#fff}
+  .controls,.panel,.scrim,#tip,.noprint,summary .btn{display:none!important}
+  header.top{background:#fff}
+  main{padding-top:8px}
+  section.block{margin-bottom:12px;break-inside:avoid}
+  .card,.tile{box-shadow:none;padding:9px}
+  .tile .val{font-size:20px}
+  .spark{height:30px}
+  .headline .line{font-size:16px}
+  .mv .big{font-size:18px}
+  .stat .n{font-size:22px}
+  .tiles{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+  .vgroups{display:block!important}
+  .moved,.qs{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+  details .math{display:block}
+  .copybox{display:none}
+  @page{size:letter;margin:10mm}
+}
+</style>
+<style id="eyebrow-preview">
+body.ep-before .ep-hit { outline: 3px solid #FF7A00 !important; outline-offset: 2px; background: rgba(255,122,0,.22) !important; border-radius: 4px; }
+body.ep-after .ep-change { text-transform: none !important; letter-spacing: normal !important; font-size: 14px !important; font-weight: 600 !important; color: inherit !important; }
+body.ep-after .ep-delete { display: none !important; }
+#ep-bar { position: fixed; left: 50%; bottom: 16px; transform: translateX(-50%); z-index: 99999; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: center;
+  max-width: calc(100vw - 24px); padding: 10px 12px; border-radius: 14px; background: #1b1b1b; color: #fff; font: 500 14px/1.35 system-ui, sans-serif; box-shadow: 0 8px 30px rgba(0,0,0,.35); }
+#ep-bar button { border: 0; border-radius: 9px; padding: 8px 12px; font: 600 14px system-ui, sans-serif; cursor: pointer; background: #333; color: #fff; }
+#ep-bar button[aria-pressed="true"] { background: #FF7A00; color: #1b1b1b; }
+#ep-bar span { opacity: .85; max-width: 46ch; }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-inner">
+    <div class="brand">
+      <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><rect width="30" height="30" rx="7" fill="var(--accent)"/><rect x="7" y="16" width="4" height="8" rx="2" fill="#fff"/><rect x="13" y="11" width="4" height="13" rx="2" fill="#fff"/><rect x="19" y="6" width="4" height="18" rx="2" fill="#fff"/></svg>
+      <div>
+        <h1>U.S. Corn Vitals <span class="badge" id="srcBadge">Public USDA data</span></h1>
+        <div class="meta" id="meta"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <label class="field" for="yearPick">Marketing year (Sept 1 to Aug 31)
+        <select id="yearPick"></select>
+      </label>
+      <button class="btn" id="themeBtn" type="button" aria-pressed="false">Dark mode</button>
+      <button class="btn" id="printBtn" type="button">Print</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="main">
+  <section class="block" aria-labelledby="hlTitle">
+    <div class="card headline">
+      <div class="eyebrow" id="hlTitle">The headline</div>
+      <p class="line" id="headline"></p>
+      <ul class="checks" id="hlChecks"></ul>
+      <p class="rule-line" id="ruleLine"></p>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="movedTitle">
+    <div class="sec-head">
+      <div><h2 id="movedTitle">What moved</h2><p id="movedSub"></p></div>
+    </div>
+    <div class="moved" id="moved"></div>
+  </section>
+
+  <section class="block" aria-labelledby="countTitle">
+    <div class="sec-head"><div><h2 id="countTitle">Status count</h2><p id="countSub"></p></div></div>
+    <div class="counts" id="counts"></div>
+  </section>
+
+  <section class="block" aria-labelledby="vitTitle">
+    <div class="sec-head">
+      <div><h2 id="vitTitle">The Vitals</h2><p>Seven numbers from USDA, one per tile. Tap a tile for the full history, the definition and the table. In each small chart the solid line is final years, the dashed line is the USDA estimate and projection, and the shaded band is within <span id="bandPct"></span> of normal.</p></div>
+      <button class="btn btn-sm noprint" id="vitTableBtn" type="button" aria-pressed="false" aria-controls="vitTable">Table view</button>
+    </div>
+    <div id="vitGroups" class="vgroups"></div>
+    <div id="vitTable" hidden></div>
+  </section>
+
+  <section class="block" aria-labelledby="qsTitle">
+    <div class="sec-head"><div><h2 id="qsTitle">More Quick Stats can add</h2><p>Quick Stats is USDA's public database of farm numbers. These six series can join this board and the weekly work already in place, each on its own release schedule.</p></div></div>
+    <div class="qs" id="qs"></div>
+  </section>
+
+  <section class="block" aria-labelledby="rulesTitle">
+    <div class="card">
+      <h2 id="rulesTitle">How this board reads the numbers</h2>
+      <ol class="rules" id="rules"></ol>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap" id="foot"></div>
+</footer>
+
+<div class="scrim" id="scrim"></div>
+<aside class="panel" id="panel" role="dialog" aria-modal="true" aria-labelledby="pTitle" aria-hidden="true">
+  <div class="panel-inner" id="panelInner"></div>
+</aside>
+<div id="tip" role="status" aria-live="polite"></div>
+
+<script>
+/* ==========================================================================
+   U.S. Corn Vitals board. Built by PrismAgent Solutions for CMC.
+   All data lives in the labeled constants below. Every number on screen is
+   computed from DATA at render time; nothing is typed onto a card by hand.
+   ========================================================================== */
+
+/* ---------- SETTINGS ---------- */
+const SETTINGS = {
+  businessName: "CMC (Commodity Marketing Company)",
+  ownerName: "Marcus Ludtke",
+  ownerTitle: "Owner",
+  pageTitle: "U.S. Corn Vitals",
+  currency: "USD",
+  asOfDate: "2026-11-10",              /* date the board was last checked */
+  dataVintage: "USDA WASDE, November 2026",
+  defaultYear: "2026/27",
+  sampleData: false,                    /* real public data: no Sample data badge */
+  sourceBadge: "Public USDA data",
+  dataSourceName: "USDA NASS Quick Stats and USDA WASDE",
+  sourcesLine: "Production, yield and acres: USDA NASS Quick Stats. Exports, ethanol use, stocks, total use and price: USDA WASDE (the September report in which each year last appeared).",
+  ownerLine: null                       /* optional: { text: "...", claims: [{ vital: "exports", side: "above" }] } */
+};
+
+/* ---------- DATA ----------
+   One row per corn marketing year (Sept 1 to Aug 31). startDate is the ISO date the year begins.
+   Units: acres in million acres, yield in bushels per acre, bushel columns in million bushels,
+   farmPrice in dollars per bushel. Numbers are plain numbers with no symbols. */
+const DATA = [
+  { year: "2018/19", startDate: "2018-09-01", plantedAcres: 88.9, harvestedAcres: 81.3, yield: 176.4, production: 14340, exports: 2066, ethanolUse: 5378, endingStocks: 2221, totalUse: 14288, farmPrice: 3.61, status: "Final",      source: "WASDE Sep 2020" },
+  { year: "2019/20", startDate: "2019-09-01", plantedAcres: 89.7, harvestedAcres: 81.3, yield: 167.5, production: 13620, exports: 1777, ethanolUse: 4857, endingStocks: 1919, totalUse: 13963, farmPrice: 3.56, status: "Final",      source: "WASDE Sep 2021" },
+  { year: "2020/21", startDate: "2020-09-01", plantedAcres: 90.7, harvestedAcres: 82.3, yield: 171.4, production: 14111, exports: 2747, ethanolUse: 5033, endingStocks: 1235, totalUse: 14821, farmPrice: 4.53, status: "Final",      source: "WASDE Sep 2022" },
+  { year: "2021/22", startDate: "2021-09-01", plantedAcres: 93.3, harvestedAcres: 85.3, yield: 176.7, production: 15074, exports: 2472, ethanolUse: 5320, endingStocks: 1377, totalUse: 14956, farmPrice: 6.00, status: "Final",      source: "WASDE Sep 2023" },
+  { year: "2022/23", startDate: "2022-09-01", plantedAcres: 88.2, harvestedAcres: 78.7, yield: 173.4, production: 13651, exports: 1662, ethanolUse: 5176, endingStocks: 1360, totalUse: 13706, farmPrice: 6.54, status: "Final",      source: "WASDE Sep 2024" },
+  { year: "2023/24", startDate: "2023-09-01", plantedAcres: 94.6, harvestedAcres: 86.5, yield: 177.3, production: 15341, exports: 2255, ethanolUse: 5489, endingStocks: 1763, totalUse: 14966, farmPrice: 4.55, status: "Final",      source: "WASDE Sep 2025" },
+  { year: "2024/25", startDate: "2024-09-01", plantedAcres: 90.9, harvestedAcres: 83.0, yield: 179.3, production: 14892, exports: 2873, ethanolUse: 5436, endingStocks: 1551, totalUse: 15126, farmPrice: 4.24, status: "Final",      source: "WASDE Sep 2026" },
+  { year: "2025/26", startDate: "2025-09-01", plantedAcres: 98.7, harvestedAcres: 90.9, yield: 186.5, production: 16964, exports: 3429, ethanolUse: 5548, endingStocks: 2095, totalUse: 16451, farmPrice: 4.16, status: "Estimate",   source: "WASDE Nov 2026" },
+  { year: "2026/27", startDate: "2026-09-01", plantedAcres: 96.8, harvestedAcres: 88.5, yield: 179.6, production: 15893, exports: 3275, ethanolUse: 5650, endingStocks: 1758, totalUse: 16255, farmPrice: 4.60, status: "Projection", source: "WASDE Nov 2026" }
+];
+
+/* ---------- VITALS (definitions) ----------
+   direction: "neutral" for every Vital. For a grain marketer neither up nor down is good or bad,
+   so no Vital is colored by direction; only the status words and icons carry meaning.
+   goal: none. "Normal" (see RULES) takes the place of a goal. */
+const VITALS = [
+  { id: "production",   group: "Supply", name: "Production",     lower: "production",     plural: false, unit: "mil bu", unitLong: "million bushels", decimals: 0, key: "production",   goal: null, direction: "neutral", owner: "Marcus Ludtke", type: "lagging", reportedBy: "USDA NASS",
+    definition: "Total U.S. corn harvested for grain in the marketing year, in million bushels. Harvested acres times yield.",
+    read: { above: "A bigger crop than normal: more bushels to move and store.", below: "A smaller crop than normal: fewer bushels to go around." },
+    nextCheck: "NASS Crop Production updates this forecast monthly from August to November." },
+  { id: "yield",        group: "Supply", name: "Yield",          lower: "yield",          plural: false, unit: "bu/acre", unitLong: "bushels an acre", decimals: 1, key: "yield",        goal: null, direction: "neutral", owner: "Marcus Ludtke", type: "lagging", reportedBy: "USDA NASS",
+    definition: "Average bushels of corn harvested per harvested acre across the U.S.",
+    read: { above: "Better yields per acre than normal.", below: "Weaker yields per acre than normal." },
+    nextCheck: "NASS Crop Production updates this forecast monthly from August to November." },
+  { id: "endingStocks", group: "Supply", name: "Ending stocks",  lower: "ending stocks",  plural: true,  unit: "mil bu", unitLong: "million bushels", decimals: 0, key: "endingStocks", goal: null, direction: "neutral", owner: "Marcus Ludtke", type: "lagging", reportedBy: "USDA WASDE",
+    definition: "Corn left in storage on August 31, the last day of the marketing year, in million bushels. It is next year's carry-in.",
+    read: { above: "More corn left over at year end than normal.", below: "Less corn left over at year end than normal." },
+    nextCheck: "Grain Stocks (quarterly) counts what is actually in storage; WASDE revises the projection monthly." },
+  { id: "exports",      group: "Demand", name: "Exports",        lower: "exports",        plural: true,  unit: "mil bu", unitLong: "million bushels", decimals: 0, key: "exports",      goal: null, direction: "neutral", owner: "Marcus Ludtke", type: "lagging", reportedBy: "USDA WASDE",
+    definition: "U.S. corn shipped to foreign buyers during the marketing year, in million bushels.",
+    read: { above: "Foreign buyers are taking far more U.S. corn than normal.", below: "Foreign buyers are taking less U.S. corn than normal." },
+    nextCheck: "WASDE revises this number monthly." },
+  { id: "ethanolUse",   group: "Demand", name: "Ethanol use",    lower: "ethanol use",    plural: false, unit: "mil bu", unitLong: "million bushels", decimals: 0, key: "ethanolUse",   goal: null, direction: "neutral", owner: "Marcus Ludtke", type: "lagging", reportedBy: "USDA WASDE",
+    definition: "Corn ground for fuel ethanol (and its by-products) during the marketing year, in million bushels.",
+    read: { above: "Ethanol plants are grinding more corn than normal.", below: "Ethanol plants are grinding less corn than normal." },
+    nextCheck: "Grain Crushings and Co-Products Production (monthly) shows corn used for ethanol as the year runs." },
+  { id: "stocksToUse",  group: "Price",  name: "Stocks-to-use",  lower: "stocks-to-use",  plural: false, unit: "%", unitLong: "percent", decimals: 1, compute: r => (isNum(r.endingStocks) && isNum(r.totalUse) && r.totalUse > 0) ? r.endingStocks / r.totalUse * 100 : null, goal: null, direction: "neutral", owner: "Marcus Ludtke", type: "leading", reportedBy: "Computed from USDA WASDE",
+    definition: "Ending stocks divided by total use, as a percent. It shows how big the leftover cushion is compared with a year of demand. A lower number means a tighter supply.",
+    read: { above: "A looser cushion: more corn left over for each bushel used.", below: "A tighter cushion: less corn left over for each bushel used." },
+    nextCheck: "WASDE revises both parts monthly; Grain Stocks (quarterly) checks the stocks side." },
+  { id: "farmPrice",    group: "Price",  name: "Avg farm price", lower: "the farm price", plural: false, unit: "$/bu", unitLong: "dollars a bushel", decimals: 2, key: "farmPrice",    goal: null, direction: "neutral", owner: "Marcus Ludtke", type: "lagging", reportedBy: "USDA WASDE",
+    definition: "The season-average price U.S. farmers receive for corn across the marketing year, in dollars per bushel.",
+    read: { above: "Farmers are getting more per bushel than normal.", below: "Farmers are getting less per bushel than normal." },
+    nextCheck: "Prices Received (monthly) shows the farm price as the year runs; WASDE revises the projection monthly." }
+];
+const GROUPS = ["Supply", "Demand", "Price"];
+
+/* ---------- RULES ----------
+   Every status, flag and note on the page comes from one of these named rules. */
+const RULES = {
+  normal: { id: "R1 Normal", firstYear: "2018/19", lastYear: "2024/25", statuses: ["Final"],
+    text: "Normal for each Vital is its average over the Final marketing years 2018/19 to 2024/25 (seven years). Stocks-to-use normal is the average of the seven yearly ratios." },
+  status: { id: "R2 Status", onTrackMaxPct: 5, watchMaxPct: 10,
+    text: "A Vital is On track when it is within 5% of normal, Watch when it is 5 to 10% away, and Off track when it is more than 10% away. Off track here means unusual, not bad." },
+  moved: { id: "R3 What moved", maxItems: 3,
+    text: "What moved lists up to three Vitals that are not On track in the selected year, furthest from normal first." },
+  priceCheck: { id: "R4 Price check", minStuGapPct: 5, minPriceGapPct: 5,
+    text: "A note appears under the headline when stocks-to-use is more than 5% from normal but the farm price has not moved more than 5% the other way (tight stocks usually go with firmer prices, loose stocks with softer ones)." },
+  yearStatus: { id: "R5 Year status",
+    text: "Final years are settled. USDA estimate years can still be revised. USDA projection years will move with each monthly WASDE." },
+  dollars: { id: "R6 Dollar translation",
+    text: "Bushel gaps are turned into dollars at the selected year's average farm price. That is a size-of-market figure for U.S. corn, not a value for CMC." }
+};
+
+/* ---------- QUICK STATS series that can be added ---------- */
+const QUICKSTATS = [
+  { name: "Corn production, yield and acres by state", freq: "Annual, plus monthly forecasts August to November", adds: "See which states are driving the national crop, and how each monthly forecast shifts the number." },
+  { name: "Crop Progress", freq: "Weekly, Mondays 3 PM Central, April to November", adds: "Planting, silking, maturity and harvest pace against last year and the five-year average." },
+  { name: "Crop Condition", freq: "Weekly, released with Crop Progress", adds: "Share of the crop rated good or excellent, an early read on where yield may land." },
+  { name: "Grain Stocks", freq: "Quarterly: January, March, June, September", adds: "Corn actually in storage on and off farm, which checks the ending stocks projection." },
+  { name: "Grain Crushings and Co-Products Production", freq: "Monthly", adds: "Corn used for ethanol month by month, so the ethanol use Vital can be tracked in season." },
+  { name: "Prices Received", freq: "Monthly", adds: "The price farmers actually received each month, so the season-average projection can be checked as the year runs." }
+];
+
+/* ---------- Column map for live data ----------
+   Exact Vitals Sheet column headers (left) mapped to DATA fields (right). */
+const COLUMN_MAP = {
+  "Marketing year": "year",
+  "Start date": "startDate",
+  "Planted (mil ac)": "plantedAcres",
+  "Harvested (mil ac)": "harvestedAcres",
+  "Yield (bu/ac)": "yield",
+  "Production (mil bu)": "production",
+  "Exports (mil bu)": "exports",
+  "Ethanol use (mil bu)": "ethanolUse",
+  "Ending stocks (mil bu)": "endingStocks",
+  "Total use (mil bu)": "totalUse",
+  "Avg farm price ($/bu)": "farmPrice",
+  "Status": "status",
+  "Source": "source"
+};
+
+/* ---------- loadData() ----------
+   Returns the rows the page draws from. Today it returns the DATA constant above. */
+async function loadData() {
+  /* ===== SWAP POINT: point the board at live data here =====
+     Option A, a Google Sheet published as CSV (File, Share, Publish to web, CSV):
+       const CSV_URL = "https://docs.google.com/spreadsheets/d/e/YOUR_SHEET_ID/pub?gid=0&single=true&output=csv";
+       const text = await (await fetch(CSV_URL, { cache: "no-store" })).text();
+       return mapRows(parseCSV(text));
+     Option B, an n8n webhook that returns JSON rows keyed by the same headers:
+       const WEBHOOK_URL = "https://YOUR-N8N-HOST/webhook/cmc-corn-vitals";
+       const json = await (await fetch(WEBHOOK_URL, { cache: "no-store" })).json();
+       return mapRows(json.rows || json);
+     Keep keys and tokens out of this file. Use a published, read-only link.
+     ===== END SWAP POINT ===== */
+  return DATA;
+}
+function parseCSV(text) {
+  const rows = []; let row = [], cell = "", q = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (q) { if (c === '"' && text[i + 1] === '"') { cell += '"'; i++; } else if (c === '"') q = false; else cell += c; }
+    else if (c === '"') q = true;
+    else if (c === ",") { row.push(cell); cell = ""; }
+    else if (c === "\n" || c === "\r") { if (c === "\r" && text[i + 1] === "\n") i++; row.push(cell); rows.push(row); row = []; cell = ""; }
+    else cell += c;
+  }
+  if (cell !== "" || row.length) { row.push(cell); rows.push(row); }
+  const head = rows.shift().map(h => h.trim());
+  return rows.filter(r => r.some(v => v.trim() !== "")).map(r => Object.fromEntries(head.map((h, i) => [h, (r[i] || "").trim()])));
+}
+function mapRows(objs) {
+  const textKeys = new Set(["year", "startDate", "status", "source"]);
+  return objs.map(o => {
+    const out = {};
+    for (const [col, key] of Object.entries(COLUMN_MAP)) {
+      const raw = o[col];
+      if (textKeys.has(key)) out[key] = raw == null ? "" : String(raw).trim();
+      else { const n = typeof raw === "number" ? raw : parseFloat(String(raw == null ? "" : raw).replace(/[$,%\s]/g, "")); out[key] = Number.isFinite(n) ? n : null; }
+    }
+    return out;
+  }).sort((a, b) => a.startDate < b.startDate ? -1 : 1);
+}
+
+/* ==========================================================================
+   Computation
+   ========================================================================== */
+function isNum(v) { return typeof v === "number" && Number.isFinite(v); }
+let ROWS = [];
+let NORMALS = {};
+let STATE = { year: SETTINGS.defaultYear, vitTable: false };
+
+function valueOf(v, row) {
+  if (!row) return null;
+  const x = v.compute ? v.compute(row) : row[v.key];
+  return isNum(x) ? x : null;
+}
+function normalRows() {
+  const a = ROWS.findIndex(r => r.year === RULES.normal.firstYear);
+  const b = ROWS.findIndex(r => r.year === RULES.normal.lastYear);
+  return ROWS.slice(a, b + 1).filter(r => RULES.normal.statuses.includes(r.status));
+}
+function computeNormals() {
+  NORMALS = {};
+  const nr = normalRows();
+  for (const v of VITALS) {
+    const vals = nr.map(r => valueOf(v, r));
+    const ok = vals.filter(isNum);
+    NORMALS[v.id] = { value: ok.length ? ok.reduce((s, x) => s + x, 0) / ok.length : null, vals, years: nr.map(r => r.year), count: ok.length, expected: nr.length };
+  }
+}
+function devPct(v, row) {
+  const x = valueOf(v, row), n = NORMALS[v.id].value;
+  if (!isNum(x) || !isNum(n) || n === 0) return null;
+  return (x - n) / n * 100;
+}
+function statusOf(v, row) {
+  const d = devPct(v, row);
+  if (d === null) return { key: "none", word: "Missing", side: null, dev: null };
+  const a = Math.abs(d);
+  const side = d >= 0 ? "above" : "below";
+  if (a <= RULES.status.onTrackMaxPct) return { key: "on", word: "On track", side, dev: d };
+  if (a <= RULES.status.watchMaxPct) return { key: "watch", word: "Watch", side, dev: d };
+  return { key: "off", word: "Off track", side, dev: d };
+}
+function rowFor(year) { return ROWS.find(r => r.year === year); }
+function prevRow(year) { const i = ROWS.findIndex(r => r.year === year); return i > 0 ? ROWS[i - 1] : null; }
+function yearLabel(row) {
+  if (!row) return "";
+  if (row.status === "Projection") return "USDA projection, will move";
+  if (row.status === "Estimate") return "USDA estimate";
+  return "Final";
+}
+function yearWithLabel(row) { return row.status === "Final" ? row.year + " (final)" : row.year + " (" + yearLabel(row) + ")"; }
+
+/* ==========================================================================
+   Formatting
+   ========================================================================== */
+function r1(x) { return Math.round(x * 10) / 10; }
+function fmtNum(x, d) { return x.toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d }); }
+function fmtVal(v, x) {
+  if (!isNum(x)) return "Missing";
+  if (v.unit === "$/bu") return "$" + fmtNum(x, 2);
+  if (v.unit === "%") return fmtNum(x, 1) + "%";
+  return fmtNum(x, v.decimals);
+}
+function fmtValUnit(v, x) {
+  if (!isNum(x)) return "Missing";
+  if (v.unit === "$/bu") return "$" + fmtNum(x, 2) + " a bushel";
+  if (v.unit === "%") return fmtNum(x, 1) + "%";
+  return fmtNum(x, v.decimals) + " " + v.unitLong;
+}
+function fmtNormal(v) { const n = NORMALS[v.id].value; return v.unit === "$/bu" ? "$" + fmtNum(n, 2) : v.unit === "%" ? fmtNum(n, 1) + "%" : fmtNum(n, v.decimals === 0 ? 0 : 1); }
+function fmtPct(d) { return fmtNum(r1(Math.abs(d)), 1) + "%"; }
+function fmtMoney(millions) {
+  const a = Math.abs(millions);
+  if (a >= 1000) return "$" + fmtNum(a / 1000, 2) + " billion";
+  return "$" + fmtNum(a, 0) + " million";
+}
+function esc(s) { return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
+function fmtDate(iso) { const [y, m, d] = iso.split("-").map(Number); return new Date(y, m - 1, d).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }); }
+function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+
+function statusIcon(key, size) {
+  size = size || 16;
+  if (key === "on") return '<svg class="si on" width="' + size + '" height="' + size + '" viewBox="0 0 16 16" aria-hidden="true"><circle class="shape" cx="8" cy="8" r="7"/><path d="M4.6 8.2l2.2 2.2 4.6-4.8" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  if (key === "watch") return '<svg class="si watch" width="' + size + '" height="' + size + '" viewBox="0 0 16 16" aria-hidden="true"><path class="shape" d="M8 1.2L15.2 14.4H0.8Z" stroke-linejoin="round"/><path d="M8 5.8v4" stroke="#0d1b2a" stroke-width="1.8" stroke-linecap="round"/><circle cx="8" cy="12.2" r="1" fill="#0d1b2a"/></svg>';
+  if (key === "off") return '<svg class="si off" width="' + size + '" height="' + size + '" viewBox="0 0 16 16" aria-hidden="true"><path class="shape" d="M8 0.8L15.2 8 8 15.2 0.8 8Z" stroke-linejoin="round"/><path d="M8 4.6v4.4" stroke="#0d1b2a" stroke-width="1.8" stroke-linecap="round"/><circle cx="8" cy="11.4" r="1" fill="#0d1b2a"/></svg>';
+  return '<svg class="si" width="' + size + '" height="' + size + '" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="var(--muted)" stroke-width="1.5"/><path d="M5 8h6" stroke="var(--muted)" stroke-width="1.5"/></svg>';
+}
+function pill(st) { return '<span class="pill ' + st.key + '">' + statusIcon(st.key) + esc(st.word) + '</span>'; }
+function sideWords(st) {
+  if (st.dev === null) return "";
+  return (st.side === "above" ? "↑ " : "↓ ") + fmtPct(st.dev) + " " + st.side + " normal";
+}
+
+/* ==========================================================================
+   Headline
+   ========================================================================== */
+function verbFor(v, row) {
+  if (row.status === "Final") return "came in at";
+  const be = v.plural ? "are" : "is";
+  return be + (row.status === "Estimate" ? " estimated at" : " projected at");
+}
+function rankedMoves(row) {
+  return VITALS.map(v => ({ v, st: statusOf(v, row) })).filter(o => o.st.dev !== null).sort((a, b) => Math.abs(b.st.dev) - Math.abs(a.st.dev));
+}
+function buildHeadline(row) {
+  const ranked = rankedMoves(row);
+  if (!ranked.length) return { text: "For " + row.year + ", the Vitals are missing, so there is no headline to draw. Without them there is no read on supply, demand or price.", parts: [] };
+  const top = ranked[0];
+  const vS = VITALS.find(v => v.id === "stocksToUse"), vP = VITALS.find(v => v.id === "farmPrice");
+  const quiet = ranked.every(o => o.st.key === "on");
+  let t = "For " + row.year + " (" + yearLabel(row) + "), " + top.v.lower + " " + verbFor(top.v, row) + " " + fmtValUnit(top.v, valueOf(top.v, row)) + ", " + fmtPct(top.st.dev) + " " + top.st.side + " normal and " + (quiet ? "the biggest gap on a quiet board where every Vital is within " + RULES.status.onTrackMaxPct + "% of normal" : "the biggest move on the board");
+  const tail = [];
+  for (const v of [vS, vP]) {
+    if (v.id === top.v.id) continue;
+    const x = valueOf(v, row);
+    tail.push(v.lower + " " + (row.status === "Final" ? "was" : "sits at") + " " + fmtValUnit(v, x) + " (normal " + fmtNormal(v) + ")");
+  }
+  if (tail.length) t += ", while " + tail.join(" and ");
+  t += ".";
+  return { text: t, top };
+}
+function priceCheck(row) {
+  const vS = VITALS.find(v => v.id === "stocksToUse"), vP = VITALS.find(v => v.id === "farmPrice");
+  const dS = devPct(vS, row), dP = devPct(vP, row);
+  if (dS === null || dP === null) return null;
+  const c = RULES.priceCheck;
+  if (dS < -c.minStuGapPct && !(dP > c.minPriceGapPct)) return "Worth a look: stocks-to-use is " + fmtPct(dS) + " below normal, a tighter cushion, but the farm price is " + (dP >= 0 ? fmtPct(dP) + " above" : fmtPct(dP) + " below") + " normal, not the firmer price tight stocks usually bring.";
+  if (dS > c.minStuGapPct && !(dP < -c.minPriceGapPct)) return "Worth a look: stocks-to-use is " + fmtPct(dS) + " above normal, a looser cushion, but the farm price is " + (dP >= 0 ? fmtPct(dP) + " above" : fmtPct(dP) + " below") + " normal, not the softer price loose stocks usually bring.";
+  return null;
+}
+function ownerLineCheck(row) {
+  const ol = SETTINGS.ownerLine;
+  if (!ol || !ol.claims) return [];
+  const out = [];
+  for (const c of ol.claims) {
+    const v = VITALS.find(x => x.id === c.vital); if (!v) continue;
+    const st = statusOf(v, row);
+    if (st.dev === null) { out.push(v.name + " is Missing for " + row.year + ", so this part of the line cannot be checked."); continue; }
+    const actual = st.key === "on" ? "near" : st.side;
+    if (actual !== c.side) out.push(v.name + " does not match the line: it is " + (actual === "near" ? "within " + RULES.status.onTrackMaxPct + "% of normal" : fmtPct(st.dev) + " " + st.side + " normal") + ".");
+  }
+  return out;
+}
+const ICON_CHECK = '<svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const ICON_NOTE = '<svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 4.5v4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="8" cy="11.6" r="1" fill="currentColor"/></svg>';
+
+function renderHeadline(row) {
+  const hl = buildHeadline(row);
+  const el = document.getElementById("headline");
+  const ol = SETTINGS.ownerLine;
+  el.textContent = ol && ol.text ? ol.text : hl.text;
+  document.getElementById("hlTitle").textContent = ol && ol.text ? "Marcus's line this year" : "The headline, drafted from the numbers";
+  const checks = [];
+  const bad = ownerLineCheck(row);
+  if (ol && ol.text) checks.push('<li>' + ICON_NOTE + '<span>Drafted from the numbers: ' + esc(hl.text) + '</span></li>');
+  const vitalsOk = VITALS.filter(v => valueOf(v, row) !== null).length;
+  if (bad.length) bad.forEach(b => checks.push('<li class="note-flag">' + ICON_NOTE + '<span>' + esc(b) + '</span></li>'));
+  else checks.push('<li>' + ICON_CHECK + '<span>Checked against all ' + vitalsOk + ' Vitals for ' + esc(row.year) + '. No Vital contradicts this line.</span></li>');
+  const pc = priceCheck(row);
+  if (pc) checks.push('<li class="note-flag">' + ICON_NOTE + '<span>' + esc(pc) + ' <span class="muted">(Rule ' + esc(RULES.priceCheck.id) + ')</span></span></li>');
+  if (row.status !== "Final") checks.push('<li>' + ICON_NOTE + '<span>' + esc(row.year) + ' is a ' + esc(yearLabel(row)) + ' from ' + esc(row.source) + '. ' + (row.status === "Projection" ? "Every number for this year will move with each monthly WASDE." : "USDA can still revise it.") + '</span></li>');
+  document.getElementById("hlChecks").innerHTML = checks.join("");
+  document.getElementById("ruleLine").textContent = "Normal is the " + RULES.normal.firstYear + " to " + RULES.normal.lastYear + " average. On track is within " + RULES.status.onTrackMaxPct + "% of normal, Watch is " + RULES.status.onTrackMaxPct + " to " + RULES.status.watchMaxPct + "% away, Off track is more than " + RULES.status.watchMaxPct + "% away. For market data, Off track means unusual, not bad.";
+}
+
+/* ==========================================================================
+   What moved
+   ========================================================================== */
+function dollarMath(v, row) {
+  const price = row.farmPrice, x = valueOf(v, row), n = NORMALS[v.id].value;
+  const pLab = "$" + fmtNum(price, 2) + " a bushel (" + row.year + " average farm price, " + (row.status === "Final" ? "final" : yearLabel(row)) + ")";
+  if (!isNum(price)) return { bushels: null, dollars: null, lines: ["Dollar translation: Missing. The farm price for " + row.year + " is not in the table, so the gap cannot be put in dollars."] };
+  if (["production", "exports", "ethanolUse", "endingStocks"].includes(v.id)) {
+    const g = x - n;
+    return { bushels: g, dollars: g * price, lines: ["Gap in bushels: " + fmtNum(x, 0) + " - " + fmtNum(n, 1) + " = " + fmtNum(g, 1) + " million bushels", "In dollars: " + fmtNum(Math.abs(g), 1) + " million bushels x " + pLab + " = about " + fmtMoney(g * price) + " at the farm price"] };
+  }
+  if (v.id === "yield") {
+    const acres = row.harvestedAcres; if (!isNum(acres)) return { bushels: null, dollars: null, lines: ["Harvested acres are Missing, so the yield gap cannot be put in bushels."] };
+    const g = (x - n) * acres;
+    return { bushels: g, dollars: g * price, lines: ["Gap per acre: " + fmtNum(x, 1) + " - " + fmtNum(n, 2) + " = " + fmtNum(x - n, 2) + " bushels an acre", "Across the crop: " + fmtNum(x - n, 2) + " x " + fmtNum(acres, 1) + " million harvested acres = " + fmtNum(g, 1) + " million bushels", "In dollars: " + fmtNum(Math.abs(g), 1) + " million bushels x " + pLab + " = about " + fmtMoney(g * price)] };
+  }
+  if (v.id === "stocksToUse") {
+    const tu = row.totalUse, es = row.endingStocks;
+    const atNormal = n / 100 * tu, g = es - atNormal;
+    return { bushels: g, dollars: g * price, lines: ["At a normal " + fmtNum(n, 3) + "% stocks-to-use, " + row.year + " ending stocks would be " + fmtNum(n, 3) + "% x " + fmtNum(tu, 0) + " total use = " + fmtNum(atNormal, 1) + " million bushels", "Cushion gap: " + fmtNum(es, 0) + " - " + fmtNum(atNormal, 1) + " = " + fmtNum(g, 1) + " million bushels", "In dollars: " + fmtNum(Math.abs(g), 1) + " million bushels x " + pLab + " = about " + fmtMoney(g * price)] };
+  }
+  if (v.id === "farmPrice") {
+    const prod = row.production; if (!isNum(prod)) return { bushels: null, dollars: null, lines: ["Production is Missing, so the price gap cannot be sized."] };
+    const g = x - n;
+    return { bushels: null, dollars: g * prod, lines: ["Gap per bushel: $" + fmtNum(x, 2) + " - $" + fmtNum(n, 3) + " = $" + fmtNum(g, 3), "Across the crop: $" + fmtNum(Math.abs(g), 3) + " x " + fmtNum(prod, 0) + " million bushels produced = about " + fmtMoney(g * prod)] };
+  }
+  return { bushels: null, dollars: null, lines: [] };
+}
+function sizeLine(v, row, dm) {
+  if (dm.dollars === null) return "Missing";
+  const more = dm.dollars >= 0;
+  if (v.id === "farmPrice") return fmtMoney(dm.dollars) + (more ? " more" : " less") + " for the crop at the farm price";
+  if (v.id === "stocksToUse") return fmtNum(Math.abs(dm.bushels), 0) + " million bushels " + (more ? "more" : "less") + " cushion, about " + fmtMoney(dm.dollars);
+  return fmtNum(Math.abs(dm.bushels), 0) + " million bushels " + (more ? "above" : "below") + " normal, about " + fmtMoney(dm.dollars);
+}
+function clientNote(v, row, st) {
+  const x = valueOf(v, row);
+  const nm = v.id === "farmPrice" ? "average farm price" : v.name.toLowerCase();
+  const who = row.status === "Final" ? "Final USDA numbers (" + row.source + ") put " + row.year + " U.S. corn " + nm + " at " : "USDA's " + row.source + " report " + (row.status === "Estimate" ? "estimates " : "projects ") + row.year + " U.S. corn " + nm + " at ";
+  return who + fmtValUnit(v, x) + ", " + fmtPct(st.dev) + " " + st.side + " the " + RULES.normal.firstYear + " to " + RULES.normal.lastYear + " average of " + fmtNormal(v) + (v.unit === "mil bu" ? " million" : "") + "." + (row.status === "Projection" ? " This is a projection and will move with each monthly WASDE." : "");
+}
+function renderMoved(row) {
+  const ranked = rankedMoves(row).filter(o => o.st.key !== "on").slice(0, RULES.moved.maxItems);
+  const box = document.getElementById("moved");
+  document.getElementById("movedSub").textContent = "The Vitals furthest from normal in " + yearWithLabel(row) + ". Bushels are turned into dollars at that year's average farm price.";
+  if (!ranked.length) {
+    box.innerHTML = '<div class="card empty" style="grid-column:1/-1">' + statusIcon("on", 22) + '<div><h3>Nothing moved outside normal in ' + esc(row.year) + '</h3><p class="small muted" style="margin:4px 0 0">Checked all ' + VITALS.length + ' Vitals for ' + esc(yearWithLabel(row)) + ' on ' + esc(fmtDate(SETTINGS.asOfDate)) + '. Rules that ran: ' + esc(RULES.normal.id) + ', ' + esc(RULES.status.id) + ', ' + esc(RULES.moved.id) + '. Every Vital is within ' + RULES.status.onTrackMaxPct + '% of normal.</p></div></div>';
+    return;
+  }
+  box.innerHTML = ranked.map((o, i) => {
+    const v = o.v, st = o.st, x = valueOf(v, row), dm = dollarMath(v, row);
+    const nr = NORMALS[v.id];
+    const mathVal = a => !isNum(a) ? "Missing" : v.unit === "%" ? fmtNum(a, 3) + "%" : fmtVal(v, a);
+    const sumLine = nr.vals.map(mathVal).join(" + ");
+    const unitSuffix = v.unit === "mil bu" ? " mil bu" : v.unit === "bu/acre" ? " bu/acre" : "";
+    const note = clientNote(v, row, st);
+    const next = row.status === "Final" ? "Final number. Use " + row.year + " as a reference year when talking with clients." : v.nextCheck + " Recheck before quoting it.";
+    return '<article class="card mv" data-vital="' + v.id + '">' +
+      '<div class="top"><h3>' + esc(v.name) + '</h3>' + pill(st) + '</div>' +
+      '<div class="big tnum" data-check="value">' + esc(fmtVal(v, x)) + '<small>' + esc(unitSuffix) + '</small> <small data-check="dev">' + esc(sideWords(st)) + '</small></div>' +
+      '<p class="read">' + esc(v.read[st.side]) + '</p>' +
+      '<dl><dt>Normal</dt><dd class="tnum" data-check="normal">' + esc(fmtNormal(v)) + esc(unitSuffix) + '</dd>' +
+      '<dt>Size of it</dt><dd data-check="size">' + esc(sizeLine(v, row, dm)) + '</dd>' +
+      '<dt>Year</dt><dd>' + esc(yearWithLabel(row)) + ', ' + esc(row.source) + '</dd>' +
+      '<dt>Watched by</dt><dd>' + esc(v.owner) + '</dd>' +
+      '<dt>Next move</dt><dd>' + esc(next) + '</dd></dl>' +
+      '<div class="copybox"><p data-check="note">' + esc(note) + '</p><button class="btn btn-sm" type="button" data-copy="' + i + '">Copy client note</button></div>' +
+      '<details><summary>See the math and the assumption</summary><ol class="math tnum">' +
+        '<li>Normal = (' + esc(sumLine) + ') / ' + nr.count + ' = ' + esc(fmtNum(nr.value, v.decimals === 0 ? 1 : 3)) + (v.unit === "%" ? "%" : "") + '</li>' +
+        '<li>Distance from normal: (' + esc(mathVal(x)) + ' - ' + esc(fmtNum(nr.value, v.decimals === 0 ? 1 : 3)) + (v.unit === "%" ? "%" : "") + ') / ' + esc(fmtNum(nr.value, v.decimals === 0 ? 1 : 3)) + (v.unit === "%" ? "%" : "") + ' = ' + (st.dev >= 0 ? "+" : "-") + esc(fmtPct(st.dev)) + ', so ' + esc(st.word) + ' (rule ' + esc(RULES.status.id) + ')</li>' +
+        dm.lines.map(l => '<li>' + esc(l) + '</li>').join("") +
+        '<li>Assumption: the dollar figure is the size of the U.S. corn market gap at the farm price. It is not CMC revenue.</li>' +
+      '</ol></details>' +
+    '</article>';
+  }).join("");
+  box.querySelectorAll("[data-copy]").forEach(b => b.addEventListener("click", () => {
+    const txt = b.parentElement.querySelector("p").textContent;
+    const done = () => { b.textContent = "Copied"; setTimeout(() => { b.textContent = "Copy client note"; }, 1600); };
+    try { navigator.clipboard.writeText(txt).then(done, () => fallbackCopy(txt, done)); } catch (e) { fallbackCopy(txt, done); }
+  }));
+}
+function fallbackCopy(txt, done) {
+  try { const t = document.createElement("textarea"); t.value = txt; t.style.position = "fixed"; t.style.opacity = "0"; document.body.appendChild(t); t.select(); document.execCommand("copy"); t.remove(); done(); } catch (e) { /* copy not available */ }
+}
+
+/* ==========================================================================
+   Status count
+   ========================================================================== */
+function renderCounts(row) {
+  const c = { on: 0, watch: 0, off: 0, none: 0 };
+  VITALS.forEach(v => c[statusOf(v, row).key]++);
+  document.getElementById("countSub").textContent = "How many of the " + VITALS.length + " Vitals sit where in " + yearWithLabel(row) + "." + (c.none ? " " + c.none + " Missing." : "");
+  const defs = [["on", "On track", "within " + RULES.status.onTrackMaxPct + "% of normal"], ["watch", "Watch", RULES.status.onTrackMaxPct + " to " + RULES.status.watchMaxPct + "% away"], ["off", "Off track", "more than " + RULES.status.watchMaxPct + "% away"]];
+  document.getElementById("counts").innerHTML = defs.map(d => '<div class="card stat"><div class="lab">' + statusIcon(d[0]) + d[1] + '</div><div class="n" data-count="' + d[0] + '">' + c[d[0]] + '</div><div class="sub">' + d[2] + '</div></div>').join("");
+}
+
+/* ==========================================================================
+   Vitals tiles and sparklines
+   ========================================================================== */
+function sparkSVG(v, selYear) {
+  const W = 240, H = 44, pad = 6;
+  const vals = ROWS.map(r => valueOf(v, r));
+  const n = NORMALS[v.id].value;
+  const ok = vals.filter(isNum).concat(isNum(n) ? [n * 0.95, n * 1.05] : []);
+  let lo = Math.min(...ok), hi = Math.max(...ok); if (hi === lo) { hi += 1; lo -= 1; }
+  const X = i => ROWS.length === 1 ? W / 2 : i * (W - 2 * pad) / (ROWS.length - 1) + pad;
+  const Y = y => H - pad - (y - lo) / (hi - lo) * (H - 2 * pad);
+  let solid = "", dash = "";
+  let lastFinal = -1; ROWS.forEach((r, i) => { if (r.status === "Final") lastFinal = i; });
+  vals.forEach((y, i) => {
+    if (!isNum(y)) return;
+    const pt = X(i).toFixed(1) + "," + Y(y).toFixed(1);
+    if (i <= lastFinal) solid += (solid ? "L" : "M") + pt;
+    if (i >= lastFinal) dash += (dash ? "L" : "M") + pt;
+  });
+  const si = ROWS.findIndex(r => r.year === selYear);
+  const band = isNum(n) ? '<rect class="band" x="0" y="' + Y(n * 1.05).toFixed(1) + '" width="' + W + '" height="' + (Y(n * 0.95) - Y(n * 1.05)).toFixed(1) + '"/><line class="nm" x1="0" x2="' + W + '" y1="' + Y(n).toFixed(1) + '" y2="' + Y(n).toFixed(1) + '"/>' : "";
+  const dot = si >= 0 && isNum(vals[si]) ? '<path class="dot" d="M' + X(si).toFixed(1) + "," + Y(vals[si]).toFixed(1) + 'h0"/>' : "";
+  return '<svg class="spark" data-spark="' + v.id + '" viewBox="0 0 ' + W + " " + H + '" preserveAspectRatio="none" role="img" aria-label="' + esc(v.name) + ' by marketing year, ' + esc(ROWS[0].year) + ' to ' + esc(ROWS[ROWS.length - 1].year) + '">' + band + '<path class="ln" d="' + solid + '"/><path class="ln est" d="' + dash + '"/>' + dot + '</svg>';
+}
+function renderVitals(row) {
+  const prev = prevRow(row.year);
+  const host = document.getElementById("vitGroups");
+  host.innerHTML = GROUPS.map(g => {
+    const tiles = VITALS.filter(v => v.group === g).map(v => {
+      const x = valueOf(v, row), st = statusOf(v, row);
+      const px = valueOf(v, prev);
+      let chg;
+      if (!prev) chg = "No prior year in the table";
+      else if (!isNum(x) || !isNum(px)) chg = "Change: Missing";
+      else {
+        const d = x - px, dp = px !== 0 ? d / px * 100 : 0;
+        const abs = v.unit === "$/bu" ? "$" + fmtNum(Math.abs(d), 2) : v.unit === "%" ? fmtNum(Math.abs(d), 1) + " pts" : fmtNum(Math.abs(d), v.decimals);
+        chg = d === 0 ? "Same as " + prev.year : (d > 0 ? "Up " : "Down ") + abs + " (" + fmtNum(r1(Math.abs(dp)), 1) + "%) from " + prev.year;
+      }
+      const extra = v.id === "ethanolUse" && isNum(row.ethanolUse) && isNum(row.production) ? '<span>' + fmtNum(row.ethanolUse / row.production * 100, 1) + '% of the crop</span>' : "";
+      const unitSuffix = v.unit === "mil bu" ? " mil bu" : v.unit === "bu/acre" ? " bu/acre" : v.unit === "$/bu" ? " a bushel" : "";
+      const missing = !isNum(x) ? '<span class="small">Missing: without it this year cannot be compared with normal.</span>' : "";
+      return '<button class="tile" type="button" data-vital="' + v.id + '" aria-label="' + esc(v.name) + ', ' + esc(fmtVal(v, x)) + ', ' + esc(st.word) + '. Open details.">' +
+        '<span class="row1"><span class="name">' + esc(v.name) + '</span>' + (v.type === "leading" ? '<span class="tag" title="Leading: tends to move before price does">leading</span>' : "") + '</span>' +
+        '<span class="val tnum">' + esc(fmtVal(v, x)) + '<small>' + esc(isNum(x) ? unitSuffix : "") + '</small></span>' + missing +
+        (row.status !== "Final" ? '<span class="yrflag">' + esc(yearLabel(row)) + '</span>' : "") +
+        '<span class="line2">' + pill(st) + '<span class="dirword">' + esc(sideWords(st)) + '</span></span>' +
+        '<span class="line2"><span>Normal ' + esc(fmtNormal(v)) + '</span><span>' + esc(chg) + '</span>' + extra + '</span>' +
+        sparkSVG(v, row.year) +
+        '<span class="foot"><span>' + esc(ROWS[0].year) + '</span><span>' + esc(ROWS[ROWS.length - 1].year) + '</span></span>' +
+      '</button>';
+    }).join("");
+    return '<div class="group"><h3>' + g + '</h3><div class="tiles">' + tiles + '</div></div>';
+  }).join("");
+  host.querySelectorAll(".tile").forEach(t => t.addEventListener("click", () => openDetail(t.dataset.vital, t)));
+  host.querySelectorAll(".spark").forEach(s => bindSparkTip(s));
+  renderVitTable(row);
+}
+function renderVitTable(row) {
+  const el = document.getElementById("vitTable");
+  const head = '<tr><th>Marketing year</th><th class="l">Status</th>' + VITALS.map(v => '<th>' + esc(v.name) + '<br><span class="muted">' + esc(v.unit) + '</span></th>').join("") + '</tr>';
+  const body = ROWS.map(r => '<tr class="' + (r.year === row.year ? "sel" : "") + '"><td>' + esc(r.year) + '</td><td class="l">' + esc(yearLabel(r)) + '</td>' + VITALS.map(v => '<td>' + esc(fmtVal(v, valueOf(v, r))) + '</td>').join("") + '</tr>').join("");
+  const norm = '<tr><td>Normal</td><td class="l">' + esc(RULES.normal.firstYear) + ' to ' + esc(RULES.normal.lastYear) + ' average</td>' + VITALS.map(v => '<td>' + esc(fmtNormal(v)) + '</td>').join("") + '</tr>';
+  el.innerHTML = '<div class="tscroll" style="margin-top:12px"><table><caption class="sr">All Vitals by marketing year</caption><thead>' + head + '</thead><tbody>' + body + norm + '</tbody></table></div>';
+}
+
+/* ---------- Tooltip ---------- */
+const tip = document.getElementById("tip");
+function showTip(html, cx, cy) {
+  tip.innerHTML = html; tip.style.display = "block";
+  const w = tip.offsetWidth, h = tip.offsetHeight, vw = document.documentElement.clientWidth;
+  let left = cx + 12; if (left + w > vw - 8) left = Math.max(8, cx - w - 12);
+  let top = cy - h - 12; if (top < 8) top = cy + 16;
+  tip.style.left = left + "px"; tip.style.top = top + "px";
+}
+function hideTip() { tip.style.display = "none"; }
+function tipHtml(v, r) {
+  const x = valueOf(v, r), st = statusOf(v, r);
+  return '<b>' + esc(r.year) + '</b> <span class="muted">' + esc(yearLabel(r)) + '</span><br>' + esc(v.name) + ': ' + esc(fmtVal(v, x)) + (v.unit === "mil bu" ? " mil bu" : v.unit === "bu/acre" ? " bu/acre" : "") + '<br>Normal ' + esc(fmtNormal(v)) + (st.dev !== null ? '<br>' + esc(st.word) + ', ' + esc(fmtPct(st.dev)) + ' ' + st.side + ' normal' : "");
+}
+function bindSparkTip(svg) {
+  const v = VITALS.find(x => x.id === svg.dataset.spark);
+  svg.addEventListener("pointermove", e => {
+    const b = svg.getBoundingClientRect();
+    const i = Math.max(0, Math.min(ROWS.length - 1, Math.round((e.clientX - b.left - b.width * 6 / 240) / (b.width * (1 - 12 / 240)) * (ROWS.length - 1))));
+    showTip(tipHtml(v, ROWS[i]), e.clientX, e.clientY);
+  });
+  svg.addEventListener("pointerleave", hideTip);
+}
+
+/* ==========================================================================
+   Detail panel with line chart and table view
+   ========================================================================== */
+let lastFocus = null, openVital = null;
+function niceTicks(lo, hi, count) {
+  const span = hi - lo, raw = span / count, mag = Math.pow(10, Math.floor(Math.log10(raw)));
+  const step = [1, 2, 2.5, 5, 10].map(s => s * mag).find(s => span / s <= count) || 10 * mag;
+  const t0 = Math.floor(lo / step) * step, t1 = Math.ceil(hi / step) * step, out = [];
+  for (let t = t0; t <= t1 + step / 2; t += step) out.push(+t.toFixed(6));
+  return out;
+}
+function lineChart(host, v, selYear) {
+  const W = Math.max(260, Math.floor(host.clientWidth - 16)), H = W < 520 ? 230 : 290;
+  const m = { l: v.unit === "$/bu" ? 44 : 52, r: 30, t: 22, b: 30 };
+  const vals = ROWS.map(r => valueOf(v, r)), n = NORMALS[v.id].value;
+  const ok = vals.filter(isNum).concat(isNum(n) ? [n * 0.95, n * 1.05] : []);
+  const ticks = niceTicks(Math.min(...ok), Math.max(...ok), 4);
+  const lo = ticks[0], hi = ticks[ticks.length - 1];
+  const X = i => m.l + i * (W - m.l - m.r) / (ROWS.length - 1);
+  const Y = y => m.t + (hi - y) / (hi - lo) * (H - m.t - m.b);
+  const tickLab = t => v.unit === "$/bu" ? "$" + fmtNum(t, 2) : v.unit === "%" ? fmtNum(t, 0) + "%" : fmtNum(t, v.decimals === 1 ? 0 : 0);
+  let s = '<svg class="chart" width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + " " + H + '" role="img" aria-label="' + esc(v.name) + ' by marketing year with the normal line">';
+  if (isNum(n)) s += '<rect class="band" x="' + m.l + '" width="' + (W - m.l - m.r) + '" y="' + Y(n * 1.05).toFixed(1) + '" height="' + (Y(n * 0.95) - Y(n * 1.05)).toFixed(1) + '"/>';
+  ticks.forEach(t => { s += '<line class="gl" x1="' + m.l + '" x2="' + (W - m.r) + '" y1="' + Y(t).toFixed(1) + '" y2="' + Y(t).toFixed(1) + '"/><text class="axis" x="' + (m.l - 6) + '" y="' + (Y(t) + 4).toFixed(1) + '" text-anchor="end">' + tickLab(t) + '</text>'; });
+  const narrow = W < 520;
+  ROWS.forEach((r, i) => { if (narrow && i % 2 && i !== ROWS.length - 1) return; s += '<text class="axis" x="' + X(i).toFixed(1) + '" y="' + (H - 10) + '" text-anchor="middle">' + (narrow ? r.year.slice(2) : r.year) + '</text>'; });
+  if (isNum(n)) s += '<line class="nm" x1="' + m.l + '" x2="' + (W - m.r) + '" y1="' + Y(n).toFixed(1) + '" y2="' + Y(n).toFixed(1) + '"/><text class="nlbl" x="' + (m.l + 4) + '" y="' + (Y(n) - 5).toFixed(1) + '">Normal ' + esc(fmtNormal(v)) + '</text>';
+  let lastFinal = -1; ROWS.forEach((r, i) => { if (r.status === "Final") lastFinal = i; });
+  let solid = "", dash = "";
+  vals.forEach((y, i) => { if (!isNum(y)) return; const p = X(i).toFixed(1) + "," + Y(y).toFixed(1); if (i <= lastFinal) solid += (solid ? "L" : "M") + p; if (i >= lastFinal) dash += (dash ? "L" : "M") + p; });
+  s += '<path class="ln" d="' + solid + '"/><path class="ln est" d="' + dash + '"/>';
+  s += '<line class="xh" x1="0" x2="0" y1="' + m.t + '" y2="' + (H - m.b) + '"/>';
+  const si = ROWS.findIndex(r => r.year === selYear);
+  vals.forEach((y, i) => { if (!isNum(y)) return; s += '<circle class="pt' + (ROWS[i].status !== "Final" ? " hollow" : "") + (i === si ? " sel" : "") + '" cx="' + X(i).toFixed(1) + '" cy="' + Y(y).toFixed(1) + '" r="' + (i === si ? 5.5 : 4) + '"/>'; });
+  if (si >= 0 && isNum(vals[si])) {
+    const lx = X(si), ly = Y(vals[si]);
+    const anchor = lx > W - 90 ? "end" : lx < m.l + 60 ? "start" : "middle";
+    const above = ly - 12 > m.t + 4;
+    s += '<text class="lbl" x="' + (anchor === "end" ? lx - 8 : anchor === "start" ? lx + 8 : lx).toFixed(1) + '" y="' + (above ? ly - 12 : ly + 20).toFixed(1) + '" text-anchor="' + anchor + '">' + esc(fmtVal(v, vals[si])) + '</text>';
+  }
+  const bw = (W - m.l - m.r) / (ROWS.length - 1);
+  ROWS.forEach((r, i) => { s += '<rect class="hover" data-i="' + i + '" x="' + (X(i) - bw / 2).toFixed(1) + '" y="' + m.t + '" width="' + bw.toFixed(1) + '" height="' + (H - m.t - m.b) + '"/>'; });
+  s += '</svg>';
+  host.innerHTML = s;
+  const svg = host.querySelector("svg"), xh = svg.querySelector(".xh");
+  svg.querySelectorAll(".hover").forEach(rc => {
+    rc.addEventListener("pointermove", e => { const i = +rc.dataset.i; xh.setAttribute("x1", X(i)); xh.setAttribute("x2", X(i)); xh.style.opacity = .6; showTip(tipHtml(v, ROWS[i]), e.clientX, e.clientY); });
+    rc.addEventListener("pointerleave", () => { xh.style.opacity = 0; hideTip(); });
+  });
+}
+function detailTable(v, selYear) {
+  const extraCols = {
+    production: [["Planted", "plantedAcres", 1, "mil ac"], ["Harvested", "harvestedAcres", 1, "mil ac"]],
+    yield: [["Harvested", "harvestedAcres", 1, "mil ac"]],
+    stocksToUse: [["Ending stocks", "endingStocks", 0, "mil bu"], ["Total use", "totalUse", 0, "mil bu"]],
+    ethanolUse: [["Share of crop", r => isNum(r.ethanolUse) && isNum(r.production) ? r.ethanolUse / r.production * 100 : null, 1, "%"]],
+    endingStocks: [["Total use", "totalUse", 0, "mil bu"]]
+  }[v.id] || [];
+  const head = '<tr><th>Marketing year</th><th class="l">Status</th><th>' + esc(v.name) + ' (' + esc(v.unit) + ')</th><th>vs normal</th><th class="l">Reads</th>' + extraCols.map(c => '<th>' + esc(c[0]) + ' (' + esc(c[3]) + ')</th>').join("") + '<th class="l">Source</th></tr>';
+  const body = ROWS.map(r => {
+    const st = statusOf(v, r);
+    return '<tr class="' + (r.year === selYear ? "sel" : "") + '"><td>' + esc(r.year) + '</td><td class="l">' + esc(yearLabel(r)) + '</td><td>' + esc(fmtVal(v, valueOf(v, r))) + '</td><td>' + (st.dev === null ? "Missing" : (st.dev >= 0 ? "+" : "-") + esc(fmtPct(st.dev))) + '</td><td class="l">' + esc(st.word) + '</td>' +
+      extraCols.map(c => { const val = typeof c[1] === "function" ? c[1](r) : r[c[1]]; return '<td>' + (isNum(val) ? esc(fmtNum(val, c[2])) + (c[3] === "%" ? "%" : "") : "Missing") + '</td>'; }).join("") + '<td class="l">' + esc(r.source) + '</td></tr>';
+  }).join("");
+  return '<div class="tscroll"><table><caption class="sr">' + esc(v.name) + ' by marketing year</caption><thead>' + head + '</thead><tbody>' + body + '<tr><td>Normal</td><td class="l">' + esc(RULES.normal.firstYear) + ' to ' + esc(RULES.normal.lastYear) + '</td><td>' + esc(fmtNormal(v)) + '</td><td></td><td></td>' + extraCols.map(() => "<td></td>").join("") + '<td></td></tr></tbody></table></div>';
+}
+function openDetail(id, from) {
+  const v = VITALS.find(x => x.id === id); if (!v) return;
+  openVital = id; lastFocus = from || document.activeElement;
+  const row = rowFor(STATE.year), st = statusOf(v, row);
+  const inner = document.getElementById("panelInner");
+  inner.innerHTML =
+    '<div class="panel-head"><div><div class="eyebrow">' + esc(v.group) + (v.type === "leading" ? " · leading" : "") + '</div><h2 id="pTitle">' + esc(v.name) + '</h2>' +
+    '<div class="line2" style="display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;margin-top:4px"><b class="tnum">' + esc(fmtValUnit(v, valueOf(v, row))) + '</b> ' + pill(st) + '<span class="dirword">' + esc(sideWords(st)) + ' in ' + esc(yearWithLabel(row)) + '</span></div></div>' +
+    '<button class="btn" type="button" id="pClose" aria-label="Close details">Close</button></div>' +
+    '<div style="display:flex;justify-content:flex-end;margin:6px 0 8px"><button class="btn btn-sm" type="button" id="pTableBtn" aria-pressed="false">Table view</button></div>' +
+    '<div class="chartbox" id="pChartBox"><div id="pChart"></div><div class="legend"><span><svg width="22" height="10" aria-hidden="true"><line x1="0" x2="22" y1="5" y2="5" stroke="var(--s1)" stroke-width="2"/></svg>' + esc(v.name) + ' (solid: final)</span><span><svg width="22" height="10" aria-hidden="true"><line x1="0" x2="22" y1="5" y2="5" stroke="var(--s1)" stroke-width="2" stroke-dasharray="5 4"/><circle cx="11" cy="5" r="3.5" fill="var(--card)" stroke="var(--s1)" stroke-width="2"/></svg>USDA estimate or projection</span><span><svg width="22" height="10" aria-hidden="true"><line x1="0" x2="22" y1="5" y2="5" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="6 4"/></svg>Normal</span><span><svg width="16" height="10" aria-hidden="true"><rect width="16" height="10" fill="var(--band)" stroke="var(--border)"/></svg>On track zone (within ' + RULES.status.onTrackMaxPct + '%)</span></div></div>' +
+    '<div id="pTable" hidden>' + detailTable(v, row.year) + '</div>' +
+    '<dl class="kv"><dt>What it is</dt><dd>' + esc(v.definition) + '</dd>' +
+    '<dt>Normal</dt><dd>' + esc(fmtNormal(v)) + ', the average of ' + esc(RULES.normal.firstYear) + ' to ' + esc(RULES.normal.lastYear) + ' (' + NORMALS[v.id].count + ' final years)</dd>' +
+    '<dt>Leading or lagging</dt><dd>' + (v.type === "leading" ? "Leading: tends to move before the farm price does." : "Lagging: it reports what the season delivered.") + '</dd>' +
+    '<dt>Watched by</dt><dd>' + esc(v.owner) + '</dd><dt>Reported by</dt><dd>' + esc(v.reportedBy) + '</dd>' +
+    '<dt>Next update</dt><dd>' + esc(v.nextCheck) + '</dd></dl>';
+  document.getElementById("scrim").classList.add("open");
+  const panel = document.getElementById("panel");
+  panel.classList.add("open"); panel.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+  requestAnimationFrame(() => { lineChart(document.getElementById("pChart"), v, row.year); document.getElementById("pClose").focus(); });
+  document.getElementById("pClose").addEventListener("click", closeDetail);
+  const tb = document.getElementById("pTableBtn");
+  tb.addEventListener("click", () => {
+    const on = tb.getAttribute("aria-pressed") !== "true";
+    tb.setAttribute("aria-pressed", on); tb.textContent = on ? "Chart view" : "Table view";
+    document.getElementById("pTable").hidden = !on; document.getElementById("pChartBox").hidden = on;
+  });
+}
+function closeDetail() {
+  const panel = document.getElementById("panel");
+  if (!panel.classList.contains("open")) return;
+  panel.classList.remove("open"); panel.setAttribute("aria-hidden", "true");
+  document.getElementById("scrim").classList.remove("open");
+  document.body.style.overflow = ""; openVital = null; hideTip();
+  if (lastFocus && document.body.contains(lastFocus)) lastFocus.focus();
+  else { const t = document.querySelector('.tile'); if (t) t.focus(); }
+}
+document.getElementById("scrim").addEventListener("click", closeDetail);
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") closeDetail();
+  if (e.key === "Tab" && openVital) {
+    const f = [...document.getElementById("panel").querySelectorAll("button,[href],select,summary,[tabindex]:not([tabindex='-1'])")].filter(x => !x.closest("[hidden]"));
+    if (!f.length) return;
+    if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
+    else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
+  }
+});
+
+/* ==========================================================================
+   Quick Stats, rules, header, footer
+   ========================================================================== */
+function renderQuickStats() {
+  document.getElementById("qs").innerHTML = QUICKSTATS.map(q => '<div class="card"><h3>' + esc(q.name) + '</h3><div class="freq">' + esc(q.freq) + '</div><p>' + esc(q.adds) + '</p></div>').join("");
+}
+function renderRules() {
+  document.getElementById("bandPct").textContent = RULES.status.onTrackMaxPct + "%";
+  document.getElementById("rules").innerHTML = Object.values(RULES).map(r => '<li><code>' + esc(r.id) + '</code> ' + esc(r.text) + '</li>').join("") +
+    '<li><code>Missing values</code> A number that is not in the table shows the word Missing, and the status for that Vital is skipped rather than guessed.</li>';
+}
+function renderHeader(row) {
+  document.getElementById("meta").innerHTML = '<b>' + esc(SETTINGS.businessName) + '</b> · ' + esc(SETTINGS.ownerName) + ', ' + esc(SETTINGS.ownerTitle.toLowerCase()) + '<br>As of ' + esc(fmtDate(SETTINGS.asOfDate)) + ' · ' + esc(SETTINGS.dataVintage) + ' · Showing ' + esc(yearWithLabel(row));
+  const badge = document.getElementById("srcBadge");
+  badge.textContent = SETTINGS.sampleData ? "Sample data" : SETTINGS.sourceBadge;
+  document.getElementById("foot").innerHTML = '<div><b>Built by PrismAgent Solutions</b> · As of ' + esc(fmtDate(SETTINGS.asOfDate)) + ' · Data source: ' + esc(SETTINGS.dataSourceName) + '</div><div>' + esc(SETTINGS.sourcesLine) + '</div><div>Year status: 2018/19 to 2024/25 are final. ' + ROWS.filter(r => r.status !== "Final").map(r => esc(r.year) + " is a " + esc(yearLabel(r))).join("; ") + '.</div>';
+}
+function renderYearPicker() {
+  const sel = document.getElementById("yearPick");
+  sel.innerHTML = ROWS.slice().reverse().map(r => '<option value="' + esc(r.year) + '"' + (r.year === STATE.year ? " selected" : "") + '>' + esc(r.year) + (r.status === "Final" ? "" : " (" + esc(yearLabel(r)) + ")") + '</option>').join("");
+}
+
+function renderAll() {
+  const row = rowFor(STATE.year) || ROWS[ROWS.length - 1];
+  STATE.year = row.year;
+  renderHeader(row); renderHeadline(row); renderMoved(row); renderCounts(row); renderVitals(row);
+  document.getElementById("vitTable").hidden = !STATE.vitTable;
+  if (openVital) openDetail(openVital, lastFocus);
+}
+
+/* ---------- Theme and controls ---------- */
+function effectiveDark() {
+  const t = document.documentElement.getAttribute("data-theme");
+  if (t) return t === "dark";
+  return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+}
+function syncThemeBtn() {
+  const b = document.getElementById("themeBtn"), dark = effectiveDark();
+  b.textContent = dark ? "Light mode" : "Dark mode";
+  b.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+}
+document.getElementById("themeBtn").addEventListener("click", () => {
+  const next = effectiveDark() ? "light" : "dark";
+  document.documentElement.setAttribute("data-theme", next);
+  try { localStorage.setItem("cmcCornTheme", next); } catch (e) { /* storage blocked */ }
+  syncThemeBtn();
+  if (openVital) lineChart(document.getElementById("pChart"), VITALS.find(v => v.id === openVital), STATE.year);
+});
+if (window.matchMedia) { const mq = window.matchMedia("(prefers-color-scheme: dark)"); if (mq.addEventListener) mq.addEventListener("change", syncThemeBtn); }
+let printTheme = null;
+window.addEventListener("beforeprint", () => { printTheme = document.documentElement.getAttribute("data-theme"); document.documentElement.setAttribute("data-theme", "light"); document.querySelectorAll("details").forEach(d => { d.dataset.wasOpen = d.open ? "1" : ""; d.open = true; }); });
+window.addEventListener("afterprint", () => { if (printTheme) document.documentElement.setAttribute("data-theme", printTheme); else document.documentElement.removeAttribute("data-theme"); document.querySelectorAll("details").forEach(d => { d.open = d.dataset.wasOpen === "1"; }); });
+document.getElementById("printBtn").addEventListener("click", () => window.print());
+document.getElementById("yearPick").addEventListener("change", e => {
+  STATE.year = e.target.value;
+  try { localStorage.setItem("cmcCornYear", STATE.year); } catch (err) { /* storage blocked */ }
+  renderAll();
+});
+document.getElementById("vitTableBtn").addEventListener("click", e => {
+  STATE.vitTable = !STATE.vitTable;
+  e.currentTarget.setAttribute("aria-pressed", STATE.vitTable);
+  e.currentTarget.textContent = STATE.vitTable ? "Hide table" : "Table view";
+  document.getElementById("vitTable").hidden = !STATE.vitTable;
+});
+let rsz; window.addEventListener("resize", () => { clearTimeout(rsz); rsz = setTimeout(() => { if (openVital) lineChart(document.getElementById("pChart"), VITALS.find(v => v.id === openVital), STATE.year); }, 150); });
+
+/* ---------- Boot ---------- */
+(async function boot() {
+  try { const t = localStorage.getItem("cmcCornTheme"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch (e) { /* storage blocked */ }
+  syncThemeBtn();
+  try { ROWS = await loadData(); } catch (e) { ROWS = DATA; }
+  ROWS = ROWS.slice().sort((a, b) => a.startDate < b.startDate ? -1 : 1);
+  computeNormals();
+  try { const y = localStorage.getItem("cmcCornYear"); if (y && rowFor(y)) STATE.year = y; } catch (e) { /* storage blocked */ }
+  if (!rowFor(STATE.year)) STATE.year = ROWS[ROWS.length - 1].year;
+  renderYearPicker(); renderQuickStats(); renderRules(); renderAll();
+})();
+</script>
+<div id="ep-bar" role="group" aria-label="Eyebrow preview">
+  <strong>Eyebrow preview</strong>
+  <button type="button" data-m="before" aria-pressed="true">Before (orange = goes away)</button>
+  <button type="button" data-m="after" aria-pressed="false">After</button>
+  <span id="ep-note">Orange labels are the eyebrows. On Corn Vitals they would be deleted: the label above the headline and the group label above each card's title.</span>
+</div>
+<script>
+(function () {
+  var notes = { before: "Orange labels are the eyebrows. On Corn Vitals they would be deleted: the label above the headline and the group label above each card's title.", after: 'After: those labels are gone. The headline and each card title stand on their own. Numbers unchanged.' };
+  function mark() {
+    document.querySelectorAll(".k-label").forEach(function (e) { e.classList.add("ep-hit", "ep-change"); });
+    document.querySelectorAll(".eyebrow").forEach(function (e) { e.classList.add("ep-hit", "ep-delete"); });
+  }
+  function set(m) {
+    mark(); document.body.classList.toggle("ep-before", m === "before"); document.body.classList.toggle("ep-after", m === "after");
+    document.querySelectorAll("#ep-bar button").forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-m") === m ? "true" : "false"); });
+    document.getElementById("ep-note").textContent = notes[m];
+  }
+  document.querySelectorAll("#ep-bar button").forEach(function (b) { b.addEventListener("click", function () { set(b.getAttribute("data-m")); }); });
+  new MutationObserver(function () { mark(); }).observe(document.body, { childList: true, subtree: true });
+  addEventListener("load", function () { set("before"); }); set("before");
+})();
+</script>
+</body>
+</html>
